@@ -85,3 +85,9 @@ No arquivo server/database/config/config.json, deixaremos o conteúdo da seguint
 ## Models
 
 Vamos criar os models a partir do sequelize-cli.
+
+### Model User
+
+```sh
+npx sequelize-cli model:generate --name User --attributes nome:string,sobrenome:string,email:string
+```
