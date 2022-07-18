@@ -68,14 +68,14 @@ No arquivo server/database/config/config.json, deixaremos o conteúdo da seguint
   "test": {
     "username": "root",
     "password": null,
-    "database": "pratica_sequelize_4",
+    "database": "pratica_sequelize_4_teste",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "pratica_sequelize_4",
+    "database": "pratica_sequelize_4_real_oficial",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
