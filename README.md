@@ -81,3 +81,7 @@ No arquivo server/database/config/config.json, deixaremos o conteúdo da seguint
   }
 }
 ```
+
+## Models
+
+Vamos criar os models a partir do sequelize-cli.
