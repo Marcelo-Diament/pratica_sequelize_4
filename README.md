@@ -106,3 +106,22 @@ Para rodarmos a migration, vamos executar no terminal o seguinte comando (dentro
 ```sh
 npx sequelize-cli db:migrate
 ```
+
+Para validarmos se a migration funcionou corretamente, vamos rodar algumas queries no nosso Workbench:
+
+```sql
+-- CREATE DATABASE pratica_sequelize_4;
+USE pratica_sequelize_4;
+
+DESCRIBE sequelizemeta;
+SELECT * FROM sequelizemeta;
+
+DESCRIBE users;
+SELECT * FROM users;
+
+DESCRIBE todos;
+SELECT * FROM todos;
+
+DESCRIBE statuses;
+SELECT * FROM statuses;
+```
