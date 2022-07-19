@@ -204,25 +204,25 @@ module.exports = {
          * }], {});
          */
         await queryInterface.bulkInsert('Statuses', [{
-                title: '01- A Desenvolver'
+                titulo: '01- A Desenvolver'
             },
             {
-                title: '02 - Em Desenvolvimento'
+                titulo: '02 - Em Desenvolvimento'
             },
             {
-                title: '03 - A Validar'
+                titulo: '03 - A Validar'
             },
             {
-                title: '04 - Em Validação'
+                titulo: '04 - Em Validação'
             },
             {
-                title: '05 - Validado'
+                titulo: '05 - Validado'
             },
             {
-                title: '06 - A Ajustar'
+                titulo: '06 - A Ajustar'
             },
             {
-                title: '07 - Finalizado'
+                titulo: '07 - Finalizado'
             }
         ], {});
     },
@@ -256,19 +256,19 @@ module.exports = {
          * }], {});
          */
         await queryInterface.bulkInsert('Todos', [{
-                title: 'To Do 01',
-                excerpt: 'Resumo do To Do 01',
-                description: 'Descrição completa do To Do 01'
+                titulo: 'To Do 01',
+                resumo: 'Resumo do To Do 01',
+                descricao: 'Descrição completa do To Do 01'
             },
             {
-                title: 'To Do 02',
-                excerpt: 'Resumo do To Do 02',
-                description: 'Descrição completa do To Do 02'
+                titulo: 'To Do 02',
+                resumo: 'Resumo do To Do 02',
+                descricao: 'Descrição completa do To Do 02'
             },
             {
-                title: 'To Do 03',
-                excerpt: 'Resumo do To Do 03',
-                description: 'Descrição completa do To Do 03'
+                titulo: 'To Do 03',
+                resumo: 'Resumo do To Do 03',
+                descricao: 'Descrição completa do To Do 03'
             }
         ], {});
     },
@@ -283,4 +283,10 @@ module.exports = {
         await queryInterface.bulkDelete('Todos', null, {});
     }
 };
+```
+
+Populando nosso BD com o conteúdo de exemplo (mocks)
+
+```sh
+npx sequelize-cli db:seed:all
 ```

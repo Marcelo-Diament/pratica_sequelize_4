@@ -12,19 +12,19 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('Todos', [{
-      title: 'To Do 01',
-      excerpt: 'Resumo do To Do 01',
-      description: 'Descrição completa do To Do 01'
+      titulo: 'To Do 01',
+      resumo: 'Resumo do To Do 01',
+      descricao: 'Descrição completa do To Do 01'
     },
     {
-      title: 'To Do 02',
-      excerpt: 'Resumo do To Do 02',
-      description: 'Descrição completa do To Do 02'
+      titulo: 'To Do 02',
+      resumo: 'Resumo do To Do 02',
+      descricao: 'Descrição completa do To Do 02'
     },
     {
-      title: 'To Do 03',
-      excerpt: 'Resumo do To Do 03',
-      description: 'Descrição completa do To Do 03'
+      titulo: 'To Do 03',
+      resumo: 'Resumo do To Do 03',
+      descricao: 'Descrição completa do To Do 03'
     }
     ], {});
   },
