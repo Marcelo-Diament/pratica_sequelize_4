@@ -335,3 +335,142 @@ Vamos adicionar os valores de createdAt e updatedAt para cada registro a ser ins
     updatedAt: new Date()
 }
 ```
+
+## Associations
+
+Criando as FKs no seeder:
+
+```js
+// Exemplo
+{
+    titulo: 'To Do 02',
+    resumo: 'Resumo do To Do 02',
+    descricao: 'Descrição completa do To Do 02',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    userId: 3,
+    statusId: 4
+}
+```
+
+E no model (Todo):
+
+```js
+'use strict';
+const {
+    Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+    class Todo extends Model {
+        static associate(models) {}
+    }
+    Todo.init({
+        titulo: DataTypes.STRING,
+        resumo: DataTypes.STRING,
+        descricao: DataTypes.STRING,
+        userId: DataTypes.INTEGER,
+        statusId: DataTypes.INTEGER
+    }, {
+        sequelize,
+        modelName: 'Todo',
+    });
+    return Todo;
+};
+```
+
+E na migration:
+
+```js
+'use strict';
+module.exports = {
+    async up(queryInterface, Sequelize) {
+        await queryInterface.createTable('Todos', {
+            id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+                type: Sequelize.INTEGER
+            },
+            titulo: {
+                type: Sequelize.STRING
+            },
+            resumo: {
+                type: Sequelize.STRING
+            },
+            descricao: {
+                type: Sequelize.STRING
+            },
+            createdAt: {
+                allowNull: false,
+                type: Sequelize.DATE
+            },
+            updatedAt: {
+                allowNull: false,
+                type: Sequelize.DATE
+            },
+            userId: {
+                allowNull: false,
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'users',
+                    key: 'id'
+                }
+            },
+            statusId: {
+                allowNull: false,
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'statuses',
+                    key: 'id'
+                }
+            },
+        });
+    },
+    async down(queryInterface, Sequelize) {
+        await queryInterface.dropTable('Todos');
+    }
+};
+```
+
+Na [documentação](https://sequelize.org/docs/v6/other-topics/migrations/#migration-skeleton) mostram de outra forma, mas, se buscar no StackOverflow, verá que a forma que funciona de verdade é da maneira que fizemos ([link](https://stackoverflow.com/questions/60338378/sequelize-migration-fails-with-errno-150-foreign-key-constraint-is-incorrectly)).
+
+Criando as associações de fato:
+
+**Model User**
+
+```js
+User.hasMany(models.Todo, {
+    as: 'todos'
+})
+```
+
+**Model Status**
+
+```js
+Status.hasMany(models.Todo, {
+    as: 'todos'
+})
+```
+
+**Model Todo**
+
+```js
+Todo.belongsTo(models.User, {
+    foreignKey: 'userId',
+    as: 'user'
+})
+Todo.belongsTo(models.Status, {
+    foreignKey: 'statusId',
+    as: 'status'
+})
+```
+
+Executar as migrations e seeders novamente:
+
+```sh
+# Refazendo as migrations
+npx sequelize-cli db:migrate
+
+# Refazendo os seeds
+npx sequelize-cli db:seed:all
+```

@@ -10,13 +10,22 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Todo.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: 'user'
+      })
+      Todo.belongsTo(models.Status, {
+        foreignKey: 'statusId',
+        as: 'status'
+      })
     }
   }
   Todo.init({
     titulo: DataTypes.STRING,
     resumo: DataTypes.STRING,
-    descricao: DataTypes.STRING
+    descricao: DataTypes.STRING,
+    userId: DataTypes.INTEGER,
+    statusId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Todo',
