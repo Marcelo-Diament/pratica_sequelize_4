@@ -15,17 +15,23 @@ module.exports = {
       {
         nome: 'Fulano',
         sobrenome: 'Santos',
-        email: 'fulano@gmail.com'
+        email: 'fulano@gmail.com',
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         nome: 'Ciclano',
         sobrenome: 'Reis',
-        email: 'ciclano@gmail.com'
+        email: 'ciclano@gmail.com',
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         nome: 'Josué',
         sobrenome: 'Silva',
-        email: 'josue@gmail.com'
+        email: 'josue@gmail.com',
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ], {})
   },

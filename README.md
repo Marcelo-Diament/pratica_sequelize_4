@@ -290,3 +290,48 @@ Populando nosso BD com o conteúdo de exemplo (mocks)
 ```sh
 npx sequelize-cli db:seed:all
 ```
+
+**Testando no Workbench**
+
+```sql
+-- CREATE DATABASE pratica_sequelize_4;
+USE pratica_sequelize_4;
+
+DESCRIBE sequelizemeta;
+SELECT * FROM sequelizemeta;
+
+DESCRIBE users;
+SELECT * FROM users;
+
+DESCRIBE todos;
+SELECT * FROM todos;
+
+DESCRIBE statuses;
+SELECT * FROM statuses;
+```
+
+| Perceba que os campos createdAt e updatedAt estão vazio E não temos FKs. Vamos corrigir isso...
+
+### Undo
+
+Vamos desfazer os seeds e migrations antes de ajustar.
+
+```sh
+# Desfazendo os seeds
+npx sequelize-cli db:seed:undo:all
+
+# Desfazendo as migrations
+npx sequelize-cli db:migrate:undo:all
+```
+
+### Ajustes Simples
+
+Vamos adicionar os valores de createdAt e updatedAt para cada registro a ser inserido via seeders:
+
+```js
+{
+    // ...,
+    createdAt: new Date(),
+    updatedAt: new Date()
+}
+```

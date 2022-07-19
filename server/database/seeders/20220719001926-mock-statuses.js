@@ -12,25 +12,39 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('Statuses', [{
-      titulo: '01- A Desenvolver'
+      titulo: '01- A Desenvolver',
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
-      titulo: '02 - Em Desenvolvimento'
+      titulo: '02 - Em Desenvolvimento',
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
-      titulo: '03 - A Validar'
+      titulo: '03 - A Validar',
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
-      titulo: '04 - Em Validação'
+      titulo: '04 - Em Validação',
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
-      titulo: '05 - Validado'
+      titulo: '05 - Validado',
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
-      titulo: '06 - A Ajustar'
+      titulo: '06 - A Ajustar',
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
-      titulo: '07 - Finalizado'
+      titulo: '07 - Finalizado',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }
     ], {});
   },
