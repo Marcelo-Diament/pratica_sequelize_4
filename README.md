@@ -138,3 +138,149 @@ npx sequelize-cli seed:generate --name mock-statuses
 # SEEDER TODO
 npx sequelize-cli seed:generate --name mock-todos
 ```
+
+Nos seeders criados, vamos alimentá-los da seguinte maneira:
+
+**Users**
+
+```js
+'use strict';
+
+module.exports = {
+    async up(queryInterface, Sequelize) {
+        /**
+         * Add seed commands here.
+         *
+         * Example:
+         * await queryInterface.bulkInsert('People', [{
+         *   name: 'John Doe',
+         *   isBetaMember: false
+         * }], {});
+         */
+        await queryInterface.bulkInsert('Users', [{
+                nome: 'Fulano',
+                sobrenome: 'Santos',
+                email: 'fulano@gmail.com'
+            },
+            {
+                nome: 'Ciclano',
+                sobrenome: 'Reis',
+                email: 'ciclano@gmail.com'
+            },
+            {
+                nome: 'Josué',
+                sobrenome: 'Silva',
+                email: 'josue@gmail.com'
+            }
+        ], {})
+    },
+
+    async down(queryInterface, Sequelize) {
+        /**
+         * Add commands to revert seed here.
+         *
+         * Example:
+         * await queryInterface.bulkDelete('People', null, {});
+         */
+        await queryInterface.bulkDelete('Users', null, {});
+    }
+};
+```
+
+**Statuses**
+
+```js
+'use strict';
+
+module.exports = {
+    async up(queryInterface, Sequelize) {
+        /**
+         * Add seed commands here.
+         *
+         * Example:
+         * await queryInterface.bulkInsert('People', [{
+         *   name: 'John Doe',
+         *   isBetaMember: false
+         * }], {});
+         */
+        await queryInterface.bulkInsert('Statuses', [{
+                title: '01- A Desenvolver'
+            },
+            {
+                title: '02 - Em Desenvolvimento'
+            },
+            {
+                title: '03 - A Validar'
+            },
+            {
+                title: '04 - Em Validação'
+            },
+            {
+                title: '05 - Validado'
+            },
+            {
+                title: '06 - A Ajustar'
+            },
+            {
+                title: '07 - Finalizado'
+            }
+        ], {});
+    },
+
+    async down(queryInterface, Sequelize) {
+        /**
+         * Add commands to revert seed here.
+         *
+         * Example:
+         * await queryInterface.bulkDelete('People', null, {});
+         */
+        await queryInterface.bulkDelete('Statuses', null, {});
+    }
+};
+```
+
+**To Dos**
+
+```js
+'use strict';
+
+module.exports = {
+    async up(queryInterface, Sequelize) {
+        /**
+         * Add seed commands here.
+         *
+         * Example:
+         * await queryInterface.bulkInsert('People', [{
+         *   name: 'John Doe',
+         *   isBetaMember: false
+         * }], {});
+         */
+        await queryInterface.bulkInsert('Todos', [{
+                title: 'To Do 01',
+                excerpt: 'Resumo do To Do 01',
+                description: 'Descrição completa do To Do 01'
+            },
+            {
+                title: 'To Do 02',
+                excerpt: 'Resumo do To Do 02',
+                description: 'Descrição completa do To Do 02'
+            },
+            {
+                title: 'To Do 03',
+                excerpt: 'Resumo do To Do 03',
+                description: 'Descrição completa do To Do 03'
+            }
+        ], {});
+    },
+
+    async down(queryInterface, Sequelize) {
+        /**
+         * Add commands to revert seed here.
+         *
+         * Example:
+         * await queryInterface.bulkDelete('People', null, {});
+         */
+        await queryInterface.bulkDelete('Todos', null, {});
+    }
+};
+```
