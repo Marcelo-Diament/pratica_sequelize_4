@@ -125,3 +125,16 @@ SELECT * FROM todos;
 DESCRIBE statuses;
 SELECT * FROM statuses;
 ```
+
+## Seeders
+
+```sh
+# SEEDER USER
+npx sequelize-cli seed:generate --name mock-users
+
+# SEEDER STATUS
+npx sequelize-cli seed:generate --name mock-statuses
+
+# SEEDER TODO
+npx sequelize-cli seed:generate --name mock-todos
+```
