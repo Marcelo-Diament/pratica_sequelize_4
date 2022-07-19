@@ -11,23 +11,28 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Users', [
-      {
-        nome: 'Fulano',
-        sobrenome: 'Santos',
-        email: 'fulano@gmail.com'
-      },
-      {
-        nome: 'Ciclano',
-        sobrenome: 'Reis',
-        email: 'ciclano@gmail.com'
-      },
-      {
-        nome: 'Josué',
-        sobrenome: 'Silva',
-        email: 'josue@gmail.com'
-      }
-    ], {})
+    await queryInterface.bulkInsert('Statuses', [{
+      title: '01- A Desenvolver'
+    },
+    {
+      title: '02 - Em Desenvolvimento'
+    },
+    {
+      title: '03 - A Validar'
+    },
+    {
+      title: '04 - Em Validação'
+    },
+    {
+      title: '05 - Validado'
+    },
+    {
+      title: '06 - A Ajustar'
+    },
+    {
+      title: '07 - Finalizado'
+    }
+    ], {});
   },
 
   async down(queryInterface, Sequelize) {
@@ -37,6 +42,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('Statuses', null, {});
   }
 };
