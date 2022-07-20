@@ -540,3 +540,28 @@ router.get('/', todosController.index);
 
 module.exports = router;
 ```
+
+## Services
+
+Criar pasta `services` dentro de `server` . Dentro dela teremos:
+
+**server/services/statuses.js**
+
+```js
+const {
+    Status
+} = require('../database/models')
+
+const statusesServices = {}
+
+statusesServices.getAllStatuses = async () => {
+    const statuses = await Status.findAll({
+        include: [{
+            association: 'todos'
+        }]
+    })
+    return statuses
+}
+
+module.exports = statusesServices
+```
