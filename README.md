@@ -474,3 +474,69 @@ npx sequelize-cli db:migrate
 # Refazendo os seeds
 npx sequelize-cli db:seed:all
 ```
+
+## Routes
+
+**server/app.js**
+
+Adicionamos:
+
+```js
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var statusesRouter = require('./routes/statuses');
+var todosRouter = require('./routes/todos');
+
+app.use('/', indexRouter);
+app.use('/usuarios', usersRouter);
+app.use('/status', statusesRouter);
+app.use('/todos', todosRouter);
+```
+
+**server/routes/users.js**
+
+```js
+const express = require('express');
+const router = express.Router();
+const usersController = require('../controllers/users')
+
+router.get('/:id/todos', usersController.showTodos);
+router.get('/:id', usersController.show);
+router.get('/', usersController.index);
+
+module.exports = router;
+```
+
+**server/routes/statuses.js**
+
+```js
+const express = require('express');
+const router = express.Router();
+const statusesController = require('../controllers/statuses')
+
+router.get('/', statusesController.index);
+
+module.exports = router;
+```
+
+**server/routes/todos.js**
+
+```js
+const express = require('express');
+const router = express.Router();
+const todosController = require('../controllers/todos')
+
+router.get('/new', todosController.add);
+router.post('/new', todosController.create);
+
+router.delete('/:id/delete', todosController.destroy);
+
+router.get('/:id/edit', todosController.edit);
+router.put('/:id/edit', todosController.update);
+
+router.get('/:id', todosController.show);
+
+router.get('/', todosController.index);
+
+module.exports = router;
+```
