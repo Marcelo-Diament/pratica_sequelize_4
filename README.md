@@ -730,3 +730,20 @@ controller.showTodos = async (req, res) => {
 
 module.exports = controller
 ```
+
+**server/controllers/statuses.js**
+
+```js
+const {
+    getAllStatuses
+} = require('../services/statuses')
+
+const controller = {}
+
+controller.index = async (req, res) => {
+    const statuses = await getAllStatuses()
+    res.json(statuses)
+}
+
+module.exports = controller
+```
